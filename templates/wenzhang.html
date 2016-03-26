@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+    <title>Blog Template for Bootstrap</title>
+
+
+
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Custom styles for this template -->
+    <link href="../static/blog.css" rel="stylesheet">
+
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../static/1.js"></script><![endif]-->
+    <script src="../static/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../static/2.js"></script>
+      <script src="../static/3.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+<nav class="navbar navbar-inverse" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="../" >{{ blog_name }}</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+
+      </ul>
+   </div>
+</nav>
+      
+    
+
+    <div class="container">
+			{% for row in cursor %}
+      <div class="blog-header">
+        <h1 class="blog-title">{{ row[0] }}</h1>
+      
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+			<div class="blog-post">
+
+			 <p class="blog-post-meta">{{ row[1] }}</p>
+			{% autoescape false %}
+			{{ row[2] }}
+			</div>
+			<hr>
+      {% import 'comment.html' as comment %}
+      {{ comment.output(url,row[0],row[3]) }}
+
+      {% endautoescape %}
+       {% endfor %}
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>目前是大二学生</h4>
+            <p>跪求一个实习机会</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>分类</h4>
+            <ol class="list-unstyled">
+              {% for row2 in cursor2 %}
+              <li><a href="../{{ row2[0] }}/">{{ row2[0] }}</a></li>
+			  {% endfor %}
+             
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>链接</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/wangxiaozhi123">GitHub</a></li>
+		<br><br><br><br>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+<div id="footer" class="container">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="navbar-inner navbar-content-center">
+        <p class="text-muted credit" >
+            <center>自豪的采用Flask和Bootstrap</center>
+        </p>
+    </div>
+</nav>
+</div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/jq.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../static/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
