@@ -3,11 +3,11 @@
 username = "123"
 password = "123"
 
-blog_name = u"*******"
+blog_name = u"王小智的个人Blog"
 
 db_path = "blog.db"
 
-url = "http://127.0.0.1:5000"
+url = "http://blog.wunise.com"
 
 #评论框请访问多说获取 http://duoshuo.com/ 注意第二行的改动 其他部分与多说提供的代码一致
 comment_box = '''
